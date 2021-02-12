@@ -9,110 +9,109 @@ class Vector:
         return len(self.nums)
 
     def magnitude(self): 
+        valor = 0
+        for num in self.nums:
+            valor += num ** 2
+            
+        mag = valor ** 0.5
+
+        return mag
 
     def euclidean_distance(self, other):
+        vectors_list = []
+        euc_dist = 0
 
-    def normalized(self):  
-
-    def cosine_similarity(self, other):
-
-    def __add__(self, other):
-
-    def __sub__(self, other):
-
-    def __mul__(self, other):
-
-    def __truediv__(self, other):
-
-
-'''
-class Vector:
-    def __init__(self, numbers):
-        self.nums = numbers
-
-    def as_list(self):
-        return self.nums
-
-    def size(self):
-        return len(self.nums)
-
-    def magnitude(self):  # raiz da soma dos quadrados de cada coordenada do vetor
-        total = 0
-
-        for dim_val in self.nums:
-            total += dim_val ** 2
-
-        return total ** 0.5
-
-    def euclidean_distance(self, other):
-        # Calcula a distÃ¢ncia entre cada par de vetores, eleva-a ao quadrado e
-        # adiciona o total. EntÃ£o tira a raiz.
-        dist = 0
-
-        for el_self, el_other in zip(self.nums, other.nums):
-            # zip permite percorrer duas listas paralelamente
-            dist += (el_self - el_other) ** 2
-
-        return dist ** 0.5
-
-    def normalized(self):  # normalizar: dividir cada elemento por magnitude
-        mag = self.magnitude()
-        new = []
-
-        for dim_val in self.nums:
-            new.append(dim_val / mag)
-
-        return Vector(new)
-
-    def cosine_similarity(self, other):
-        dot_pdt = self * other  # calcula produto escalar com mÃ©todo __mul__ abaixo
-        return dot_pdt / (self.magnitude() * other.magnitude())
-
-    def __add__(self, other):
-        if isinstance(other, Vector) and self.size() == other.size():
-            new = []
-
-            for el_self, el_other in zip(self.nums, other.nums):
-                new.append(el_self + el_other)
-
-            return Vector(new)  # alternativamente, uma soluÃ§Ã£o mais Pythonica:
-            # return Vector([x + y for x, y in zip(self.nums, other.nums)])
-
-        return None
-
-    def __sub__(self, other):
-        if isinstance(other, Vector) and self.size() == other.size():
-            new = []
-
-            for el_self, el_other in zip(self.nums, other.nums):
-                new.append(el_self - el_other)
-
-            return Vector(new)  # alternativamente, uma soluÃ§Ã£o mais Pythonica:
-            # return Vector([x - y for x, y in zip(self.nums, other.nums)])
-
-        return None
-
-    def __mul__(self, other):
-        if isinstance(other, Vector) and self.size() == other.size():
-            total = 0
-
-            for el_self, el_other in zip(self.nums, other.nums):
-                total += el_self * el_other  # produto escalar
-
-            return total
-
-        if isinstance(other, (int, float)):
-            new = []
-
-            for dim_val in self.nums:
-                new.append(dim_val * other)  # multiplica cada entrada por other
-
-            return Vector(new)
+        for i in range(len(self.nums)):
+            vls = self.nums[i]
+            vlo = other.nums[i]
+            par = [vls, vlo]
+            vectors_list.append(par)
         
-        return None
+        for i in range(len(vectors_list)):
+            euc_dist += (vectors_list[i][0] - vectors_list[i][1]) ** 2
+
+        return euc_dist ** 0.5
+
+    def normalized(self):
+        magnitude = self.magnitude()
+        normalizado = []
+
+        for num in self.nums:
+            normalizado.append(num / magnitude)
+
+        return Vector(normalizado)
+
+    def cosine_similarity(self, other):
+        prod_escalar = self * other  
+        return prod_escalar / (self.magnitude() * other.magnitude())
+
+    def __add__(self, other):
+        if isinstance(other, Vector) and len(self.nums) == len(other.nums):
+            vectors_list = []
+
+            for i in range(len(self.nums)):
+                vls = self.nums[i]
+                vlo = other.nums[i]
+                par = [vls, vlo]
+                vectors_list.append(par)
+            
+            for i in range(len(vectors_list)):
+                vectors_list[i] = (vectors_list[i][0] + vectors_list[i][1])
+            
+            return Vector(vectors_list)
+        
+        else:
+            return None
+
+    def __sub__(self, other):
+        if isinstance(other, Vector) and len(self.nums) == len(other.nums):
+            vectors_list = []
+
+            for i in range(len(self.nums)):
+                vls = self.nums[i]
+                vlo = other.nums[i]
+                par = [vls, vlo]
+                vectors_list.append(par)
+            
+            for i in range(len(vectors_list)):
+                vectors_list[i] = (vectors_list[i][0] - vectors_list[i][1])
+            
+            return Vector(vectors_list)
+        
+        else:
+            return None
+
+    def __mul__(self, other):
+        if isinstance(other, Vector) and len(self.nums) == len(other.nums):
+            vectors_list = []
+            valor = 0
+
+            for i in range(len(self.nums)):
+                vls = self.nums[i]
+                vlo = other.nums[i]
+                par = [vls, vlo]
+                vectors_list.append(par)
+            
+            for i in range(len(vectors_list)):
+                vectors_list[i] = (vectors_list[i][0] * vectors_list[i][1])
+            
+            return sum(vectors_list)
+        
+        elif isinstance(other, (int, float)):
+            novo_vetor = []
+
+            for num in self.nums:
+                novo_vetor.append(num * other)  
+
+            return Vector(novo_vetor)
+            
+        else:
+            return None
 
     def __truediv__(self, other):
-        if isinstance(other, (int, float)):
-            return self * (1 / other)  # dividir Ã© multiplicar pelo inverso
+        if isinstance(other, int) or isinstance(other,float):
+            return self * (1 / other)  
+        
+        else:
+            return None
 
-        return None '''
