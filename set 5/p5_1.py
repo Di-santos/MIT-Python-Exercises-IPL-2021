@@ -96,4 +96,4 @@ def ant_set_direction(commands, ant_rotation, ant_direction):
     elif ant_rotation == '':
         return ant_direction
 
-print(run_langton('RRL', 4))
+print(run_langton('RLRR', 51))
