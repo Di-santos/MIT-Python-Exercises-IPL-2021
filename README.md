@@ -12,7 +12,12 @@ Os exercícios e trabalhos a serem entregados durante as duas semanas de aula es
 - Set 4 - Classes (Básico)
 - Set 5 - Classes (Avançado)
 
-Além disso, cada set possui um desafio, ou seja, um exercício com maior complexidade e peso do que seus complementares.
+Além disso, esses sets possuem desafios, ou seja, exercícios com maior complexidade e peso do que seus complementares.
+- p1_6 - Aproximação de Pi com círculo simulado no plano cartesiano
+- p2_5 - Criptografia com Cifra de César
+- p3_5 - Aproximação da Integral de uma função
+- p4_1 - Mini-Sistema de controle de armazém com dicionários
+- p5_1 - Implementação da versão completa da [Langton's Ant](https://pt.wikipedia.org/wiki/Formiga_de_Langton)(Máquina de Turing)
 
 # Material
 Neste repósitório existe também um diretório com os materiais de estudo
