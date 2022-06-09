@@ -1,4 +1,4 @@
-# MIT-Python-Exercises-IPL-2021
+# MIT-Python-IPL-Bootcamp-2021
 [MIT-IPL-2021 - Home](http://web.mit.edu/~armelin/python_intro_iap/index.html)
 
 Este Repositório contém o conteúdo gerado ao longo do IPL-2021, um curso de Introdução à Python oferecido pelo MIT ([Massachusetts Institute of Technology](https://www.mit.edu/)) em parceria com a UNICAMP.
