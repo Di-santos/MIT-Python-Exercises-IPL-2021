@@ -2,7 +2,7 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
 # Passa a url para a request
-url = "http://olympus.realpython.org/profiles/aphrodite"
+url = "https://www.letras.mus.br/duzz-mc/"
 page = urlopen(url)
 
 # Extrai o HTML da página
@@ -16,5 +16,11 @@ end_index = html.find("</title>")
 title = html[start_index:end_index]
 
 # Com parser
-title = data.find_all("img")
-print(title)
+title = data.find_next("title")
+
+# Puxando nomes de músicas de artistas
+musics = []
+for li in data.find_all("li" , attrs={"class": "cnt-list-row -song"}):
+    musics.append(li.contents[1].contents[0].contents[0])
+
+print(musics)
